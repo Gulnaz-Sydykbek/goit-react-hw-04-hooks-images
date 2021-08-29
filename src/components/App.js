@@ -20,6 +20,13 @@ function App() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    return () => {
+      setPage(1);
+      setImages([]);
+    };
+  }, [imageName]);
+
+  useEffect(() => {
     const imagesFetchApi = () => {
       fetchImages(imageName, page)
         .then(images => {
@@ -33,10 +40,6 @@ function App() {
     };
 
     if (imageName !== '') {
-      setImages([]);
-      setError(null);
-      setStatus('pending');
-
       imagesFetchApi();
     }
   }, [imageName, page]);
@@ -44,8 +47,6 @@ function App() {
   const loadMorePages = () => {
     return setPage(state => state + 1);
   };
-
-  console.log(page);
 
   const handleFormSubmit = imageName => {
     setImageName(imageName);

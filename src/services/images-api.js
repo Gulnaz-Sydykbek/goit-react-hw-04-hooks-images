@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-function fetchImages(name, page) {
+function fetchImages(name, page = 1) {
   const KEY = '22204382-c38be1b1e7fd4cceb3bc7515f';
   const BASE_URL = 'https://pixabay.com/api';
   const perPage = 12;
@@ -19,7 +19,7 @@ function fetchImages(name, page) {
 
 fetchImages.propTypes = {
   name: PropTypes.string.isRequired,
-  //page: PropTypes.number.isRequired,
+  page: PropTypes.number.isRequired,
 };
 
 export default fetchImages;
